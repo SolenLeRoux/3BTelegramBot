@@ -1,13 +1,11 @@
-# Reloot Bot
+# 3B bot
 
-Ce bot permet d'envoyer des messages à intervalles réguliers sur les chats sur lesquels il est ajouté.
+Ce bot permet d'envoyer des messages à intervalles réguliers afin d'aider les gens à se rappeler qu'il faut faire les tâches ménagères.
 
 ## Commandes à envoyer au BotFather
 
 ```
-add - adds a reloot
-delete - deletes an activated reloot 
-list - lists the activated reloots
+
 ```
 
 ## Utilisation
@@ -32,5 +30,5 @@ et faites un `npm install` pour installer les dépendances.
 Placez vous dans le dossier du bot puis:
 
 ```bash
-$ screen -d -m -c config.screenrc -S reloot_bot
+$ screen -d -m -c config.screenrc -S 3B_bot
 ```
