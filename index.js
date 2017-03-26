@@ -1,9 +1,8 @@
 var TelegramBot = require('node-telegram-bot-api');
 var config = require('./config.json');
 
-var token = '273882916:AAHtvZkm8sP3ECrfdxFXtFLdUPphguCEcFM';
 // Setup polling way
-var bot = new TelegramBot(token, {polling: true});
+var bot = new TelegramBot(config.token, {polling: true});
 
 // Matches /echo [whatever]
 bot.onText(/\/echo (.+)/, function (msg, match) {
