@@ -72,6 +72,13 @@ bot.onText(/\/ogenkidesuka/, function (msg) {
     bot.sendMessage(fromChat, resp);
 });
 
+bot.onText(/\/aurevoir/, function (msg) {
+    var fromChat = msg.chat.id;
+    var fromFirstName = msg.from.first_name;
+    var resp = "Au revoir " + fromFirstName + " san";
+    bot.sendMessage(fromChat, resp);
+});
+
 /* Que contient msg ? C'est un JSON de la forme suivante pour un chat privé :
 {
 message_id : int,
