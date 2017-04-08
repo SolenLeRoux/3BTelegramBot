@@ -12,7 +12,7 @@ bot.onText(/\/echo (.+)/, function (msg, match) {
 });
 
 // Dit Bonjour à la personne
-bot.onText(/\/bonjour (.+)/, function (msg, match) {
+bot.onText(/\/bonjour/, function (msg, match) {
    var fromChat = msg.chat.id;
    var fromFirstName = msg.from.first_name;
    var fromLastName = msg.from.last_name;
