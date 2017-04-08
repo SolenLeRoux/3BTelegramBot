@@ -15,8 +15,7 @@ bot.onText(/\/echo (.+)/, function (msg, match) {
 bot.onText(/\/test (.+)/, function (msg, match) {
     var fromId = msg.from.id;
     var resp = match[1];
-    bot.sendMessage(fromId, config.token);
-    setTimeout(bot.sendMessage(fromId, config.token), 3000);
+    bot.sendMessage(fromId, JSON.stringify(msg));
 });
 
 // Any kind of message
