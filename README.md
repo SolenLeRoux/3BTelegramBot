@@ -32,3 +32,9 @@ Placez vous dans le dossier du bot puis:
 ```bash
 $ screen -d -m -c config.screenrc -S 3B_bot
 ```
+
+Pour arrêter le bot, faire
+
+```bash
+$ screen -X -S [id_du_screen] quit
+```
