@@ -52,33 +52,18 @@ bot.onText(/\/poubelle/, function(msg) {
     bot.sendMessage(fromChat, resp);
 });
 
-// Matches /echo [whatever]
-bot.onText(/\/echo (.+)/, function (msg, match) {
-    var fromId = msg.from.id;
-    var resp = match[1];
-    bot.sendMessage(fromId, "Je réponds : "+resp);
-});
-
 // Dit Bonjour à la personne
-bot.onText(/\/bonjour/, function (msg, match) {
+bot.onText(/\/bonjour/, function (msg) {
    var fromChat = msg.chat.id;
    var fromFirstName = msg.from.first_name;
    bot.sendMessage(fromChat, "Bonjour " + fromFirstName + " san")
 });
 
-// Test
-bot.onText(/\/test (.+)/, function (msg, match) {
-    var fromId = msg.from.id;
-    var resp = match[1];
-    bot.sendMessage(fromId, JSON.stringify(match));
-});
-
-// Any kind of message
-bot.on('message', function (msg) {
-    var chatId = msg.chat.id;
-    // photo can be: a file path, a stream or a Telegram file_id
-    var photo = 'cats.png';
-    bot.sendPhoto(chatId, photo, {caption: 'Lovely kittens'});
+// Help
+bot.onText(/\/help/, function (msg) {
+    var fromChat = msg.chat.id;
+    var resp = "Je réponds actuellement aux commandes /bonjour et /poubelle";
+    bot.sendMessage(fromChat, JSON.stringify(match));
 });
 
 /* Que contient msg ? C'est un JSON de la forme suivante pour un chat privé :
