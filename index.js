@@ -63,7 +63,7 @@ bot.onText(/\/bonjour/, function (msg) {
 bot.onText(/\/help/, function (msg) {
     var fromChat = msg.chat.id;
     var resp = "Je réponds actuellement aux commandes /bonjour et /poubelle";
-    bot.sendMessage(fromChat, JSON.stringify(match));
+    bot.sendMessage(fromChat, resp);
 });
 
 /* Que contient msg ? C'est un JSON de la forme suivante pour un chat privé :
