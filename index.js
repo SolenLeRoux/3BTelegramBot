@@ -1,8 +1,25 @@
 var TelegramBot = require('node-telegram-bot-api');
 var config = require('./config.json');
 
+var poubelle = require('./aquiletour');
+
+
 // Setup polling way
 var bot = new TelegramBot(config.token, {polling: true});
+
+
+bot.onText(/\/poubelle/, function(msg) {
+    var fromChat = msg.chat.id;
+    var duo = aQuiLeTour(msg.date);
+    var chambre1 = duo[0][0];
+    var chambre2 = duo[1][0];
+    var prenom1 = duo[0][1];
+    var prenom2 = duo[1][1];
+    var resp = "Cette semaine, c'est au tour des chambres "
+        + chambre1 + " et " + chambre2 + ", soit "
+        + prenom1 + " et " + prenom2 ;
+    bot.sendMessage(fromChat, resp);
+});
 
 // Matches /echo [whatever]
 bot.onText(/\/echo (.+)/, function (msg, match) {
@@ -15,8 +32,7 @@ bot.onText(/\/echo (.+)/, function (msg, match) {
 bot.onText(/\/bonjour/, function (msg, match) {
    var fromChat = msg.chat.id;
    var fromFirstName = msg.from.first_name;
-   var fromLastName = msg.from.last_name;
-   bot.sendMessage(fromChat, "Bonjour " + fromFirstName + " " + fromLastName)
+   bot.sendMessage(fromChat, "Bonjour " + fromFirstName + " san")
 });
 
 // Test
@@ -83,4 +99,8 @@ et de la forme suivante pour un chat normal :
  }]}
 
 
+ */
+
+/* match contient un array composé en [0] du message originel,
+et en [1] du message amputé de la commande /echo ou /qqch
  */
