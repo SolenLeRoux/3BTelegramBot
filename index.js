@@ -31,7 +31,7 @@ var etage = [
 function aQuiLeTour(date) {
     var debut = date - 1491177600; // on passe de Unix au nb de secondes depuis le 3 avril 2017
     var semaine = parseInt(debut / 604800); // on passe aux nombres de semaines s'étant écoulées depuis
-    var tour = (semaine % 11) + 6;
+    var tour = (semaine % 11) + 4;
     return [etage[tour * 2], etage[tour * 2 + 1]]
 }
 
@@ -49,7 +49,7 @@ bot.onText(/\/poubelle/, function(msg) {
     var resp = "Cette semaine, c'est au tour des chambres "
         + chambre1 + " et " + chambre2 + ", soit "
         + prenom1 + " et " + prenom2 ;
-    bot.sendMessage(fromChat, resp);
+    bot.sendMessage(fromChat, "Durant les vacances, la gestion des poubelles est laissée aux personnes restantes. Je vous fais confiance.");
 });
 
 // Dit Bonjour à la personne
@@ -57,6 +57,12 @@ bot.onText(/\/bonjour/, function (msg) {
    var fromChat = msg.chat.id;
    var fromFirstName = msg.from.first_name;
    bot.sendMessage(fromChat, "Bonjour " + fromFirstName + " san")
+});
+
+bot.onText(/\/bisou|\/calin|\/coeur/, function (msg) {
+    var fromChat = msg.chat.id;
+    var fromFirstName = msg.from.first_name;
+    bot.sendMessage(fromChat, "Je ne comprends pas ces démonstrations d'affection, " + fromFirstName + " san")
 });
 
 // Help
@@ -79,9 +85,28 @@ bot.onText(/\/aurevoir/, function (msg) {
     bot.sendMessage(fromChat, resp);
 });
 
+bot.onText(/\/bonnenuit/, function (msg) {
+    var fromChat = msg.chat.id;
+    var fromFirstName = msg.from.first_name;
+    var resp = "Dormez bien, " + fromFirstName + " san";
+    bot.sendMessage(fromChat, resp);
+});
+
 bot.onText(/\/manger/, function (msg) {
     var fromChat = msg.chat.id;
     var resp = "Seulement si vous faites la vaisselle après";
+    bot.sendMessage(fromChat, resp);
+});
+
+bot.onText(/\/vaisselle/, function (msg) {
+    var fromChat = msg.chat.id;
+    var resp = "Personne n'est désigné d'office pour faire la vaisselle, c'est le rôle de tout un chacun à l'étage.";
+    bot.sendMessage(fromChat, resp);
+});
+
+bot.onText(/\/ricecooker/, function (msg) {
+    var fromChat = msg.chat.id;
+    var resp = "Si vous comptez utiliser le Rice Cooker de Shin, n'oubliez pas de l'éteindre après usage et de le laver avec une éponge douce sans trop frotter.";
     bot.sendMessage(fromChat, resp);
 });
 
