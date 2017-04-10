@@ -110,6 +110,18 @@ bot.onText(/\/ricecooker/, function (msg) {
     bot.sendMessage(fromChat, resp);
 });
 
+bot.onText(/\/ivan|anniversaire/, function (msg) {
+    var fromChat = msg.chat.id;
+    var resp = "Joyeux anniversaire Ivan san !";
+    bot.sendMessage(fromChat, resp);
+});
+
+bot.onText(/\/eau/, function (msg) {
+    var fromChat = msg.chat.id;
+    var resp = "Ca n'a pas l'odeur de l'abricot";
+    bot.sendMessage(fromChat, resp);
+});
+
 /* Que contient msg ? C'est un JSON de la forme suivante pour un chat privé :
 {
 message_id : int,
