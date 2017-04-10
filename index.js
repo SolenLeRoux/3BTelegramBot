@@ -35,6 +35,9 @@ function aQuiLeTour(date) {
     return [etage[tour * 2], etage[tour * 2 + 1]]
 }
 
+var test = require('./aquiletour');
+var funcTest = test.aQuiLeTour;
+
 // Setup polling way
 var bot = new TelegramBot(config.token, {polling: true});
 
@@ -100,7 +103,7 @@ bot.onText(/\/manger/, function (msg) {
 
 bot.onText(/\/vaisselle/, function (msg) {
     var fromChat = msg.chat.id;
-    var resp = "Personne n'est désigné d'office pour faire la vaisselle, c'est le rôle de tout un chacun à l'étage.";
+    var resp = "Si vous n'avez pas le temps de faire votre vaisselle, amenez-la chez vous. Il n'y a pas d'excuse pour salir l'étage.";
     bot.sendMessage(fromChat, resp);
 });
 
@@ -110,7 +113,7 @@ bot.onText(/\/ricecooker/, function (msg) {
     bot.sendMessage(fromChat, resp);
 });
 
-bot.onText(/\/ivan|anniversaire/, function (msg) {
+bot.onText(/\/ivan|\/anniversaire/, function (msg) {
     var fromChat = msg.chat.id;
     var resp = "Joyeux anniversaire Ivan san !";
     bot.sendMessage(fromChat, resp);
@@ -119,6 +122,24 @@ bot.onText(/\/ivan|anniversaire/, function (msg) {
 bot.onText(/\/eau/, function (msg) {
     var fromChat = msg.chat.id;
     var resp = "Ca n'a pas l'odeur de l'abricot";
+    bot.sendMessage(fromChat, resp);
+});
+
+bot.onText(/\/boire|\/soiree/, function (msg) {
+    var fromChat = msg.chat.id;
+    var resp = "Vous êtes priés de fermer les portes du salon d'étage lors des soirées et de tout nettoyer le lendemain matin, merci";
+    bot.sendMessage(fromChat, resp);
+});
+
+bot.onText(/\/four/, function (msg) {
+    var fromChat = msg.chat.id;
+    var resp = "Si vous comptez utiliser le four de Shin, ne posez rien à même la plaque, utilisez du papier cuisson";
+    bot.sendMessage(fromChat, resp);
+});
+
+bot.onText(/\/testpersodesolen/, function (msg) {
+    var fromChat = msg.chat.id;
+    var resp = test(0);
     bot.sendMessage(fromChat, resp);
 });
 
