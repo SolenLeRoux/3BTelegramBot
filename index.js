@@ -139,7 +139,7 @@ bot.onText(/\/four/, function (msg) {
 
 bot.onText(/\/testpersodesolen/, function (msg) {
     var fromChat = msg.chat.id;
-    var resp = test(0);
+    var resp = funcTest(0);
     bot.sendMessage(fromChat, resp);
 });
 
