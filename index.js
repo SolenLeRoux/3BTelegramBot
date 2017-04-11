@@ -29,14 +29,14 @@ var etage = [
 ];
 
 function aQuiLeTour(date) {
-    var debut = date - 1491177600; // on passe de Unix au nb de secondes depuis le 3 avril 2017
-    var semaine = parseInt(debut / 604800); // on passe aux nombres de semaines s'étant écoulées depuis
-    var tour = (semaine % 11) + 4;
+    const debut = date - 1491177600; // on passe de Unix au nb de secondes depuis le 3 avril 2017
+    const semaine = parseInt(debut / 604800); // on passe aux nombres de semaines s'étant écoulées depuis
+    const tour = (semaine % 11) + 4;
     return [etage[tour * 2], etage[tour * 2 + 1]]
 }
 
-var test = require('./aquiletour');
-var funcTest = test.aQuiLeTour;
+const test = require('./aquiletour');
+//var funcTest = test.aQuiLeTour;
 
 // Setup polling way
 var bot = new TelegramBot(config.token, {polling: true});
@@ -139,7 +139,13 @@ bot.onText(/\/four/, function (msg) {
 
 bot.onText(/\/testpersodesolen/, function (msg) {
     var fromChat = msg.chat.id;
-    var resp = funcTest(0);
+    var resp = test(0);
+    bot.sendMessage(fromChat, resp);
+});
+
+bot.onText(/\/loli/, function (msg) {
+    var fromChat = msg.chat.id;
+    var resp = "Selon l'article 227-25 du code pénal, le fait, par un majeur, d'exercer sans violence, contrainte, menace ni surprise une atteinte sexuelle sur la personne d'un mineur de quinze ans est puni de cinq ans d'emprisonnement et de 75 000 euros d'amende.";
     bot.sendMessage(fromChat, resp);
 });
 
