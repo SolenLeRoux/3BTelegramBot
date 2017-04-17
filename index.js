@@ -1,50 +1,27 @@
-var TelegramBot = require('node-telegram-bot-api');
+//var TelegramBot = require('node-telegram-bot-api');
 var config = require('./config.json');
 
-var etage = [
-    ["B301", "Stepan"],
-    ["B302", "Arnaud"],
-    ["B303", "Haoliang"],
-    ["B304", "Jiayi"],
-    ["B305", "Guillaume"],
-    ["B306", "Antoine"],
-    ["B307", "Shoulong"],
-    ["B308", "Yusu"],
-    ["B309", "Raymond"],
-    ["B310", "Edmond"],
-    ["B311", "Vincent"],
-    ["B312", "David"],
-    ["B313", "Tatiana"],
-    ["B314", "Owain"],
-    ["B315", "Gaëlle"],
-    ["B316", "Younes"],
-    ["B317", "Solen"],
-    ["B318", "Samy"],
-    ["B319", "Gabriel"],
-    ["B320", "Côme"],
-    ["B321", "Maxime"],
-    ["B322", "Kylian"],
-    ["B323", "Martin"],
-    ["B324", "Guillaume"]
-];
+var etage = require('./src/etage');
+var aQuiLeTour = require('./src/aquiletour');
 
-function aQuiLeTour(date) {
-    const debut = date - 1491177600; // on passe de Unix au nb de secondes depuis le 3 avril 2017
-    const semaine = parseInt(debut / 604800); // on passe aux nombres de semaines s'étant écoulées depuis
-    const tour = (semaine % 11) + 4;
-    return [etage[tour * 2], etage[tour * 2 + 1]]
-}
-
-const test = require('./aquiletour');
-//var funcTest = test.aQuiLeTour;
+const troll = require('./src/troll');
 
 // Setup polling way
 var bot = new TelegramBot(config.token, {polling: true});
 
+for (var key in troll) {
+    if (troll.hasOwnProperty(key)) {
+        bot.onText(key, function(msg) {
+            var fromChat = msg.chat.id;
+            var fromFirstName = msg.from.first_name;
+            bot.sendMessage(troll(key))
+        })
+    }
+}
 
 bot.onText(/\/poubelle/, function(msg) {
     var fromChat = msg.chat.id;
-    var duo = aQuiLeTour(msg.date);
+    var duo = aQuiLeTour(etage, msg.date);
     var chambre1 = duo[0][0];
     var chambre2 = duo[1][0];
     var prenom1 = duo[0][1];
@@ -52,7 +29,7 @@ bot.onText(/\/poubelle/, function(msg) {
     var resp = "Cette semaine, c'est au tour des chambres "
         + chambre1 + " et " + chambre2 + ", soit "
         + prenom1 + " et " + prenom2 ;
-    bot.sendMessage(fromChat, "Durant les vacances, la gestion des poubelles est laissée aux personnes restantes. Je vous fais confiance.");
+    bot.sendMessage(fromChat, resp);
 });
 
 // Dit Bonjour à la personne
