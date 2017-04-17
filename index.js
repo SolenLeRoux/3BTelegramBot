@@ -1,4 +1,4 @@
-//var TelegramBot = require('node-telegram-bot-api');
+var TelegramBot = require('node-telegram-bot-api');
 var config = require('./config.json');
 
 var etage = require('./src/etage');
