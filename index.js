@@ -149,6 +149,12 @@ bot.onText(/\/loli/, function (msg) {
     bot.sendMessage(fromChat, resp);
 });
 
+bot.onText(/\/disbonjoura/, function (msg, match) {
+    var fromChat = msg.chat.id;
+    var resp = "Bonjour " + match;
+    bot.sendMessage(fromChat, resp);
+});
+
 /* Que contient msg ? C'est un JSON de la forme suivante pour un chat privé :
 {
 message_id : int,
