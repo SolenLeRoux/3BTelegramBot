@@ -151,7 +151,7 @@ bot.onText(/\/loli/, function (msg) {
 
 bot.onText(/\/disbonjoura/, function (msg, match) {
     var fromChat = msg.chat.id;
-    var resp = "Bonjour " + match;
+    var resp = "Bonjour " + match[1];
     bot.sendMessage(fromChat, resp);
 });
 
