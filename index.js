@@ -149,9 +149,10 @@ bot.onText(/\/loli/, function (msg) {
     bot.sendMessage(fromChat, resp);
 });
 
-bot.onText(/\/disbonjoura (.+)/, function (msg, match) {
+bot.onText(/\/disbonjoura (.+)/, function (msg) {
     var fromChat = msg.chat.id;
-    var resp = "Bonjour " + match[1];
+    var name = msg.text.split(' ');
+    var resp = "Bonjour " + name[1];
     bot.sendMessage(fromChat, resp);
 });
 
