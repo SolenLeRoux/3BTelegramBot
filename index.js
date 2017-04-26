@@ -152,7 +152,7 @@ bot.onText(/\/loli/, function (msg) {
 bot.onText(/\/disbonjoura (.+)/, function (msg) {
     var fromChat = msg.chat.id;
     var name = msg.text.split(' ');
-    var resp = "Bonjour " + name[1];
+    var resp = "Bonjour " + name[1] + " san";
     bot.sendMessage(fromChat, resp);
 });
 
