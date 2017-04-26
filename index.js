@@ -52,7 +52,7 @@ bot.onText(/\/poubelle/, function(msg) {
     var resp = "Cette semaine, c'est au tour des chambres "
         + chambre1 + " et " + chambre2 + ", soit "
         + prenom1 + " et " + prenom2 ;
-    bot.sendMessage(fromChat, "Durant les vacances, la gestion des poubelles est laissée aux personnes restantes. Je vous fais confiance.");
+    bot.sendMessage(fromChat, resp);
 });
 
 // Dit Bonjour à la personne
